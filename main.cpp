@@ -23,7 +23,8 @@ int main() {
 }
 
 void do_test_7() {
-  int N, sum=0;
+  int N;
+  long long sum=0;
   std::cin >> N;
 
   for(int i=1; i<=N; ++i) {
