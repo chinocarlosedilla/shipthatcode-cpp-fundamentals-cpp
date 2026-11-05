@@ -1,15 +1,27 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 void do_test_1();
 void do_test_2();
 void do_test_3();
+void do_test_4();
 
 int main() {
   //do_test_1();
   //do_test_2();
-  do_test_3();
+  //do_test_3();
+  do_test_4();
   return 0;
+}
+
+void do_test_4() {
+  std::string input;
+  std::getline(std::cin, input);
+
+  std::reverse(input.begin(), input.end());
+  std::cout << input << std::endl;
+
 }
 
 void do_test_3() {
