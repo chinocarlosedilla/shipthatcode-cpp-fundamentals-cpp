@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <iomanip>
+#include <vector>
 
 void do_test_1();
 void do_test_2();
@@ -14,6 +15,7 @@ void do_test_8();
   long long square(long long n);
 void do_test_9();
   void swap(int& a, int& b);
+void do_test_10();
 
 int main() {
   //do_test_1();
@@ -24,8 +26,35 @@ int main() {
   //do_test_6();
   //do_test_7();
   //do_test_8();
-  do_test_9();
+  //do_test_9();
+  do_test_10();
   return 0;
+}
+
+void do_test_10() {
+  std::vector<int> temps;
+  int input;
+
+
+  while(std::cin >> input)
+    temps.push_back(input);
+
+  int largest = temps[0];
+  int instance = 0;
+
+  for(std::vector<int>::iterator i = temps.begin();
+    i<=temps.end(); ++i) {
+    if(largest == *i) {
+      ++instance;
+    }
+    if(largest < (*i)) {
+      largest = (*i);
+      instance = 1;
+    }
+  }
+
+  std::cout << largest << std::endl << instance << std::endl;
+  
 }
 
 void do_test_9() {
