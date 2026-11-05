@@ -35,7 +35,6 @@ void do_test_10() {
   std::vector<int> temps;
   int input;
 
-
   while(std::cin >> input)
     temps.push_back(input);
 
@@ -43,18 +42,20 @@ void do_test_10() {
   int instance = 0;
 
   for(std::vector<int>::iterator i = temps.begin();
-    i<=temps.end(); ++i) {
+    i<temps.end(); ++i) {
+    //std::cerr << "Checking [" << *i << "]" << std::endl;
     if(largest == *i) {
       ++instance;
+      //std::cerr << "Increasing instance coount to [" << instance << "]" << std::endl;
     }
-    if(largest < (*i)) {
+    else if(largest < (*i)) {
+      //std::cerr << "New largest is now [" << *i << "]" << std::endl;
       largest = (*i);
       instance = 1;
     }
   }
 
   std::cout << largest << std::endl << instance << std::endl;
-  
 }
 
 void do_test_9() {
