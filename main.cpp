@@ -9,6 +9,7 @@ void do_test_3();
 void do_test_4();
 void do_test_5();
 void do_test_6();
+void do_test_7();
 
 int main() {
   //do_test_1();
@@ -16,8 +17,19 @@ int main() {
   //do_test_3();
   //do_test_4();
   //do_test_5();
-  do_test_6();
+  //do_test_6();
+  do_test_7();
   return 0;
+}
+
+void do_test_7() {
+  int N, sum=0;
+  std::cin >> N;
+
+  for(int i=1; i<=N; ++i) {
+    sum += i;
+  }
+  std::cout << sum << std::endl;
 }
 
 void do_test_6() {
