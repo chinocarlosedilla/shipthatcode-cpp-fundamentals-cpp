@@ -12,6 +12,8 @@ void do_test_6();
 void do_test_7();
 void do_test_8();
   long long square(long long n);
+void do_test_9();
+  void swap(int& a, int& b);
 
 int main() {
   //do_test_1();
@@ -21,8 +23,22 @@ int main() {
   //do_test_5();
   //do_test_6();
   //do_test_7();
-  do_test_8();
+  //do_test_8();
+  do_test_9();
   return 0;
+}
+
+void do_test_9() {
+  int a, b;
+  std::cin >> a >> b;
+  swap(a,b);
+  std::cout << a << " " << b << "\n";
+}
+
+void swap(int& a, int& b) {
+  int swapper = a;
+  a = b;
+  b = swapper;
 }
 
 void do_test_8() {
