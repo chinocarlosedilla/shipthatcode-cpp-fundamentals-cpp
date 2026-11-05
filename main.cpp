@@ -1,20 +1,36 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <iomanip>
 
 void do_test_1();
 void do_test_2();
 void do_test_3();
 void do_test_4();
+void do_test_5();
 
 int main() {
   //do_test_1();
   //do_test_2();
   //do_test_3();
-  do_test_4();
+  //do_test_4();
+  do_test_5();
   return 0;
 }
 
+void do_test_5() {
+  std::string item_name;
+  int item_quantity;
+  double unit_price;
+
+  std::getline(std::cin, item_name);
+  std::cin >> item_quantity;
+  std::cin >> unit_price;
+
+  std::cout << std::left << std::setw(10) << item_name << "|"
+    << std::right << std::setw(5) << item_quantity << "|"
+    << std::right << std::fixed << std::setw(10) << std::setprecision(2) << static_cast<double>(item_quantity) * unit_price << std::endl;
+}
 void do_test_4() {
   std::string input;
   std::getline(std::cin, input);
