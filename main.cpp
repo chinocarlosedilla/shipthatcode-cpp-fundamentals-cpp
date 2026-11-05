@@ -8,14 +8,34 @@ void do_test_2();
 void do_test_3();
 void do_test_4();
 void do_test_5();
+void do_test_6();
 
 int main() {
   //do_test_1();
   //do_test_2();
   //do_test_3();
   //do_test_4();
-  do_test_5();
+  //do_test_5();
+  do_test_6();
   return 0;
+}
+
+void do_test_6() {
+  int n;
+  std::cin >> n;
+
+  if(n%3 == 0 && n%5 == 0) {
+    std::cout << "FizzBuzz" << std::endl;
+  }
+  else if(n%3 == 0) {
+    std::cout << "Fizz" << std::endl;
+  }
+  else if(n%5==0) {
+    std::cout << "Buzz" << std::endl;
+  }
+  else {
+    std::cout << n << std::endl;
+  }
 }
 
 void do_test_5() {
