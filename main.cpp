@@ -10,6 +10,8 @@ void do_test_4();
 void do_test_5();
 void do_test_6();
 void do_test_7();
+void do_test_8();
+  long long square(long long n);
 
 int main() {
   //do_test_1();
@@ -18,8 +20,19 @@ int main() {
   //do_test_4();
   //do_test_5();
   //do_test_6();
-  do_test_7();
+  //do_test_7();
+  do_test_8();
   return 0;
+}
+
+void do_test_8() {
+  long long n;
+  std::cin >> n;
+  std::cout << square(n) << "\n";
+}
+
+long long square(long long n) {
+  return n*n;
 }
 
 void do_test_7() {
