@@ -44,7 +44,7 @@ void do_test_12() {
     input.push_back(tmp);
   }
   long long output = std::accumulate(input.begin(), input.end(), 0LL,
-    [](long long run, int p) {return p % 2 == 0 ? run + (p*p) : run;});
+    [](long long run, int p) {return p % 2 == 0 ? run + (static_cast<long long>(p)*p) : run;});
   
   std::cout << output << std::endl;
 }
