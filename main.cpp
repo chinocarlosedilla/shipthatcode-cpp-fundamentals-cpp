@@ -20,6 +20,8 @@ void do_test_9();
 void do_test_10();
 void do_test_11();
 void do_test_12();
+void do_test_13();
+  class Rectangle;
 
 int main() {
   //do_test_1();
@@ -33,8 +35,46 @@ int main() {
   //do_test_9();
   //do_test_10();
   //do_test_11();
-  do_test_12();
+  //do_test_12();
+  do_test_13();
   return 0;
+}
+
+class Rectangle {
+  int w;
+  int h;
+public:
+  Rectangle(int w, int h) {
+    this->w = w;
+    this->h = h;
+  }
+
+  int area() const {
+    return w*h;
+  }
+
+  int perimeter() const {
+    return w*2 + h*2;
+  }
+
+  bool isSquare() const {
+    return w == h;
+  }
+  
+};
+
+void do_test_13() {
+  int w,h;
+  std::cin >> w >> h;
+  Rectangle r = Rectangle(w,h);
+
+  int a = r.area();
+  int p = r.perimeter();
+  bool sq = r.isSquare();
+  std::cout << "area: " << a << "\n";
+  std::cout << "perimeter: " << p << "\n";
+  std::cout << "square: " << (sq ? "yes" : "no") << "\n";
+  
 }
 
 void do_test_12() {
