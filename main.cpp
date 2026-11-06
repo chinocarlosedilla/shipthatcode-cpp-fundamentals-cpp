@@ -28,7 +28,9 @@ void do_test_14();
   class Rectangle_t2;
   class Triangle;
   class Square;
-  
+void do_test_15();
+  template <typename T> class MinMax;
+  template <typename T> void report2(const std::string& label, const MinMax<T>& m);
 
 int main() {
   //do_test_1();
@@ -44,8 +46,77 @@ int main() {
   //do_test_11();
   //do_test_12();
   //do_test_13();
-  do_test_14();
+  //do_test_14();
+  do_test_15();
   return 0;
+}
+
+template <typename T>
+class MinMax {
+    // TODO: private members -- how many values were added,
+    // and the smallest and largest seen so far (both of type T).
+  T _v;
+  T smallest;
+  T largest;
+  int _count;
+public:
+  MinMax() {
+    _count = 0;
+  }
+
+  void add(const T& v) {
+    // TODO: record v (count it, update smallest and largest).
+    if(_count == 0) {
+      smallest = v;
+      largest = v;
+    }
+    if (smallest > v) {
+      smallest = v;
+    }
+    if (largest < v) {
+      largest = v;
+    }
+    ++_count;
+    (void)v;
+  }
+
+    int count() const { return _count; }   // TODO
+    T low() const { return smallest; }      // TODO
+    T high() const { return largest; }     // TODO
+};
+
+// Given: prints one summary line for any MinMax<T>.
+template <typename T>
+void report2(const std::string& label, const MinMax<T>& m) {
+    if (m.count() == 0) {
+        std::cout << label << ": empty\n";
+        return;
+    }
+    std::cout << label << ": count=" << m.count()
+              << " min=" << m.low() << " max=" << m.high() << "\n";
+}
+
+void do_test_15() {
+    int n;
+    std::cin >> n;
+    MinMax<int> nums;
+    for (int i = 0; i < n; ++i) {
+        int v;
+        std::cin >> v;
+        nums.add(v);
+    }
+
+    int m;
+    std::cin >> m;
+    MinMax<std::string> words;
+    for (int i = 0; i < m; ++i) {
+        std::string w;
+        std::cin >> w;
+        words.add(w);
+    }
+
+    report2("ints", nums);
+    report2("words", words);
 }
 
 class Shape {
