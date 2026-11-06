@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <vector>
 #include <map>
+#include <numeric>
 
 void do_test_1();
 void do_test_2();
@@ -18,6 +19,7 @@ void do_test_9();
   void swap(int& a, int& b);
 void do_test_10();
 void do_test_11();
+void do_test_12();
 
 int main() {
   //do_test_1();
@@ -30,8 +32,21 @@ int main() {
   //do_test_8();
   //do_test_9();
   //do_test_10();
-  do_test_11();
+  //do_test_11();
+  do_test_12();
   return 0;
+}
+
+void do_test_12() {
+  std::vector<int> input;
+  int tmp;
+  while(std::cin >> tmp) {
+    input.push_back(tmp);
+  }
+  long long output = std::accumulate(input.begin(), input.end(), 0LL,
+    [](long long run, int p) {return p % 2 == 0 ? run + (p*p) : run;});
+  
+  std::cout << output << std::endl;
 }
 
 void do_test_11() {
