@@ -22,6 +22,13 @@ void do_test_11();
 void do_test_12();
 void do_test_13();
   class Rectangle;
+void do_test_14();
+  class Shape;
+  double report(const Shape& s);
+  class Rectangle_t2;
+  class Triangle;
+  class Square;
+  
 
 int main() {
   //do_test_1();
@@ -36,8 +43,98 @@ int main() {
   //do_test_10();
   //do_test_11();
   //do_test_12();
-  do_test_13();
+  //do_test_13();
+  do_test_14();
   return 0;
+}
+
+class Shape {
+    // TODO: two pure virtual functions (area and name) and a virtual destructor
+public:
+  virtual double area() const = 0;
+  virtual std::string name() const = 0;
+};
+
+// TODO: class Rectangle : public Shape   (width, height)
+class Rectangle_t2 : public Shape {
+  const double * width;
+  const double * height;
+public:
+  explicit Rectangle_t2(const double &width, const double &height) {
+    this->width = &width;
+    this->height = &height;
+  }
+
+  double area() const override {
+    return (*width) * (*height);
+  }
+
+  std::string name() const override {
+    return "rectangle";
+  }
+};
+
+// TODO: class Triangle  : public Shape   (base, height)
+class Triangle : public Shape {
+  const double * base;
+  const double * height;
+public:
+  Triangle(const double &base, const double &height) {
+    this->base = &base;
+    this->height = &height;
+  }
+
+  double area() const override {
+    return static_cast<double>(*base)*(*height)/2;
+  }
+
+  std::string name() const override {
+    return "triangle";
+  }
+};
+
+class Square : public Rectangle_t2 {
+public:
+  explicit Square(const double &side) : Rectangle_t2{side, side} {}
+
+  std::string name() const override {
+    return "square";
+  }
+};
+
+double report(const Shape& s) {
+    // TODO: print "<name> <area>" on one line and return the area
+  std::cout << s.name() << " " << s.area() << std::endl;
+  return s.area();
+}
+
+void do_test_14() {
+  int n;
+  std::cin >> n;
+  std::cout << std::fixed << std::setprecision(2);
+  double total = 0;
+  for (int i = 0; i < n; i++) {
+    std::string kind;
+    double a = 0, b = 0;
+    std::cin >> kind;
+    if (kind == "rect") {
+      std::cin >> a >> b;
+      // TODO: build a Rectangle from a and b, then add report(...) to total
+      Rectangle_t2 r = Rectangle_t2(a,b);
+      total += report(r);
+    } else if (kind == "tri") {
+      std::cin >> a >> b;
+      // TODO: build a Triangle from a and b, then add report(...) to total
+      Triangle t = Triangle(a,b);
+      total += report(t);
+    } else if (kind == "square") {
+      std::cin >> a;
+      // TODO: build a Square from a, then add report(...) to total
+      Square s = Square(a);
+      total += report(s);
+    }
+  }
+  std::cout << "total " << total << "\n";
 }
 
 class Rectangle {
