@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iomanip>
 #include <vector>
+#include <map>
 
 void do_test_1();
 void do_test_2();
@@ -16,6 +17,7 @@ void do_test_8();
 void do_test_9();
   void swap(int& a, int& b);
 void do_test_10();
+void do_test_11();
 
 int main() {
   //do_test_1();
@@ -27,8 +29,24 @@ int main() {
   //do_test_7();
   //do_test_8();
   //do_test_9();
-  do_test_10();
+  //do_test_10();
+  do_test_11();
   return 0;
+}
+
+void do_test_11() {
+  std::map<std::string, int> freq;
+
+  std::string tmp;
+  while(std::cin >> tmp)
+    freq[tmp] += 1;
+
+  std::cout << freq.size() << std::endl;
+
+  for(std::map<std::string, int>::iterator i = freq.begin();
+    i != freq.end(); ++i) {
+    std::cout << i->first << " " << i->second << std::endl;
+  }
 }
 
 void do_test_10() {
